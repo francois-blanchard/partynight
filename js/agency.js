@@ -4,6 +4,22 @@
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
 
+function initialize() {
+  var myLatlng = new google.maps.LatLng(47.19477,-1.26140);
+  var mapOptions = {
+    center: myLatlng,
+    zoom: 12,
+    scrollwheel: false
+  };
+  var map = new google.maps.Map(document.getElementById('map-canvas'),
+      mapOptions);
+  var marker = new google.maps.Marker({
+      position: myLatlng,
+      map: map,
+      title: '#VPN'
+  });
+};
+
 // jQuery for page scrolling feature - requires jQuery Easing plugin
 $(function() {
     $('a.page-scroll').bind('click', function(event) {
@@ -13,6 +29,7 @@ $(function() {
         }, 1500, 'easeInOutExpo');
         event.preventDefault();
     });
+    google.maps.event.addDomListener(window, 'load', initialize);
 });
 
 // Highlight the top nav as scrolling occurs
